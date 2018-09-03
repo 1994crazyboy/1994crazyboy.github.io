@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gogs,git," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！ &amp;lt;!-- m">
+<meta name="keywords" content="gogs,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下使用gogs搭建git服务器">
+<meta property="og:url" content="http://www.heyboy.me/2017/01/09/Windows下使用gogs搭建git服务器/index.html">
+<meta property="og:site_name" content="何永宁博客">
+<meta property="og:description" content="gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！ &amp;lt;!-- m">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://p1.bpimg.com/4851/6df5ba2d7eb2d19e.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/c3e3c74a4eafd39a.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/435d9fcfcece8761.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/83a7600694daaf33.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/a7373dcda7a3dc5e.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/18c792e57c018a62.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/a416f07eecb84eef.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/4178f9aa8ce79644.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/faf24efbe993c6ce.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/f924a1a108aee665.jpg">
+<meta property="og:updated_time" content="2017-01-20T14:53:49.134Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows下使用gogs搭建git服务器">
+<meta name="twitter:description" content="gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！ &amp;lt;!-- m">
+<meta name="twitter:image" content="http://p1.bpimg.com/4851/6df5ba2d7eb2d19e.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.heyboy.me/2017/01/09/Windows下使用gogs搭建git服务器/"/>
+
+
+
+
+
+  <title>Windows下使用gogs搭建git服务器 | 何永宁博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">何永宁博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2017/01/09/Windows下使用gogs搭建git服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henning">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何永宁博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows下使用gogs搭建git服务器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-09T22:27:02+08:00">
+                2017-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>Windows 下 使用gogs搭建gitzhi</h2>
+<h3>1.gogs简介</h3>
+<p>gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！</p>
+<p><img src="http://p1.bpimg.com/4851/6df5ba2d7eb2d19e.jpg" alt="gogsHome"></p>
+<h3>2.gogs下载</h3>
+<p>官网下载地址：</p>
+<p>32位v0.9.113下载地址：http://download.csdn.net/detail/abcdhyn/9733224</p>
+<p>64位v0.9.113下载地址：http://download.csdn.net/detail/abcdhyn/9733225</p>
+<h3>3.gogs安装</h3>
+<p>下载解压出来后的目录为：</p>
+<p><img src="http://i1.piimg.com/4851/c3e3c74a4eafd39a.jpg" alt="download"></p>
+<p>在解压目录下打开cmd，然后在运行gogs.exe，建议不要双击运行
+！
+<img src="http://i1.piimg.com/4851/435d9fcfcece8761.jpg" alt="gogs"></p>
+<p>这里提示出了运行gogs相关运行参数。这里提示参数web是开启gogs web服务。</p>
+<h4><strong>然后运行==gogs.exe web==</strong></h4>
+<p><img src="http://i1.piimg.com/4851/83a7600694daaf33.jpg" alt="gogs web"></p>
+<p>运行成功后，会提示Listen：http://0.0.0.0:3000，这个就是gogs的服务地址，用浏览器打开即可弹出安装gogs提示界面。</p>
+<p>ps:其实就是输入http://localhost:3000即可，首次运行会跳转到安装页面，按照提示即可完成安装。gogs支持的数据库有mysql postsql sqlite，这里使用的是mysql，数据库默认名称为gogs。所以我们也按照默认名称创建一个用于保存gogs服务相关信息的数据库。</p>
+<p><img src="http://i1.piimg.com/4851/a7373dcda7a3dc5e.jpg" alt="image"></p>
+<h4><strong>- 创建gogs数据库</strong></h4>
+<p><img src="http://i1.piimg.com/4851/18c792e57c018a62.jpg" alt="image">
+<img src="http://i1.piimg.com/4851/a416f07eecb84eef.jpg" alt="image"></p>
+<h4><strong>- 设置gogs的代码仓库目录</strong></h4>
+<p><img src="http://i1.piimg.com/4851/4178f9aa8ce79644.jpg" alt="image"></p>
+<h4><strong>- 设置gogs的超级管理员</strong></h4>
+<p><img src="http://i1.piimg.com/4851/faf24efbe993c6ce.jpg" alt="image"></p>
+<h4><strong>- 安装成功</strong></h4>
+<p>安装成功后默认会使用刚才设置的管理员账号去登录。
+<img src="http://i1.piimg.com/4851/f924a1a108aee665.jpg" alt="image"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gogs-git/" rel="tag"># gogs,git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/25/Java中的线程安全和线程不安全/" rel="next" title="Java中的线程安全和线程不安全">
+                <i class="fa fa-chevron-left"></i> Java中的线程安全和线程不安全
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/15/测试文章/" rel="prev" title="测试文章">
+                测试文章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Henning" />
+          <p class="site-author-name" itemprop="name">Henning</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Windows 下 使用gogs搭建gitzhi</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">1.gogs简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">2.gogs下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">3.gogs安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.1.</span> <span class="nav-text">然后运行==gogs.exe web==</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.2.</span> <span class="nav-text">- 创建gogs数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.3.</span> <span class="nav-text">- 设置gogs的代码仓库目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.4.</span> <span class="nav-text">- 设置gogs的超级管理员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.5.</span> <span class="nav-text">- 安装成功</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henning</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

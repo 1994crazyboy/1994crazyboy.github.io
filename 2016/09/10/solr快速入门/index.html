@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="solr," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="solr快速入门    添加xml索引文档 更新文档 删除文档 查询文档 排序文档 关键字的高亮和权重    &amp;lt;!-- more --&amp;gt; 1 添加xml索引文档 索引测试文件的路径：solr-4.7.2\example\exampledocs 例如添加该路径下的solr.xml和monitor.xml到solr中，使用的命令如下： 12//切换到当前文件夹路径下，然后执行命令java">
+<meta name="keywords" content="solr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="solr4.7.2快速入门">
+<meta property="og:url" content="http://www.heyboy.me/2016/09/10/solr快速入门/index.html">
+<meta property="og:site_name" content="何永宁博客">
+<meta property="og:description" content="solr快速入门    添加xml索引文档 更新文档 删除文档 查询文档 排序文档 关键字的高亮和权重    &amp;lt;!-- more --&amp;gt; 1 添加xml索引文档 索引测试文件的路径：solr-4.7.2\example\exampledocs 例如添加该路径下的solr.xml和monitor.xml到solr中，使用的命令如下： 12//切换到当前文件夹路径下，然后执行命令java">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-01-09T14:19:27.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="solr4.7.2快速入门">
+<meta name="twitter:description" content="solr快速入门    添加xml索引文档 更新文档 删除文档 查询文档 排序文档 关键字的高亮和权重    &amp;lt;!-- more --&amp;gt; 1 添加xml索引文档 索引测试文件的路径：solr-4.7.2\example\exampledocs 例如添加该路径下的solr.xml和monitor.xml到solr中，使用的命令如下： 12//切换到当前文件夹路径下，然后执行命令java">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.heyboy.me/2016/09/10/solr快速入门/"/>
+
+
+
+
+
+  <title>solr4.7.2快速入门 | 何永宁博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">何永宁博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2016/09/10/solr快速入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henning">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何永宁博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">solr4.7.2快速入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-10T22:55:02+08:00">
+                2016-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2>solr快速入门</h2>
+<hr>
+<blockquote>
+<ul>
+<li>添加xml索引文档</li>
+<li>更新文档</li>
+<li>删除文档</li>
+<li>查询文档</li>
+<li>排序文档</li>
+<li>关键字的高亮和权重</li>
+<li></li>
+</ul>
+</blockquote>
+<p>&lt;!-- more --&gt;</p>
+<h3>1 添加xml索引文档</h3>
+<p>索引测试文件的路径：solr-4.7.2\example\exampledocs
+例如添加该路径下的solr.xml和monitor.xml到solr中，使用的命令如下：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//切换到当前文件夹路径下，然后执行命令</span><br><span class="line">java -jar post.jar solr.xml monitor.xml</span><br></pre></td></tr></table></figure></p>
+<p>通过添加索引数据文件，就可以通过solr搜索到了，搜索的网址：
+http://localhost:8983/solr/#/collection1/query
+添加后还可以直接在浏览器中搜索。例如：http://localhost:8983/solr/collection1/select?q=solr&amp;wt=json&amp;indent=true
+上述的例子搜索的关键词是solr，在solr.xml文件中已经添加了该字段，所以能够搜索到内容如下：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;responseHeader&quot;:&#123;</span><br><span class="line">    &quot;status&quot;:0,</span><br><span class="line">    &quot;QTime&quot;:0,</span><br><span class="line">    &quot;params&quot;:&#123;</span><br><span class="line">      &quot;q&quot;:&quot;solr&quot;,</span><br><span class="line">      &quot;indent&quot;:&quot;true&quot;,</span><br><span class="line">      &quot;wt&quot;:&quot;json&quot;&#125;&#125;,</span><br><span class="line">  &quot;response&quot;:&#123;&quot;numFound&quot;:1,&quot;start&quot;:0,&quot;docs&quot;:[</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;:&quot;SOLR1000&quot;,</span><br><span class="line">        &quot;name&quot;:&quot;Solr, the Enterprise Search Server&quot;,</span><br><span class="line">        &quot;manu&quot;:&quot;Apache Software Foundation&quot;,</span><br><span class="line">        &quot;cat&quot;:[&quot;software&quot;,</span><br><span class="line">          &quot;search&quot;],</span><br><span class="line">        &quot;features&quot;:[&quot;Advanced Full-Text Search Capabilities using Lucene&quot;,</span><br><span class="line">          &quot;Optimized for High Volume Web Traffic&quot;,</span><br><span class="line">          &quot;Standards Based Open Interfaces - XML and HTTP&quot;,</span><br><span class="line">          &quot;Comprehensive HTML Administration Interfaces&quot;,</span><br><span class="line">          &quot;Scalability - Efficient Replication to other Solr Search Servers&quot;,</span><br><span class="line">          &quot;Flexible and Adaptable with XML configuration and Schema&quot;,</span><br><span class="line">          &quot;Good unicode support: héllo (hello with an accent over the e)&quot;],</span><br><span class="line">        &quot;price&quot;:0.0,</span><br><span class="line">        &quot;price_c&quot;:&quot;0,USD&quot;,</span><br><span class="line">        &quot;popularity&quot;:10,</span><br><span class="line">        &quot;inStock&quot;:true,</span><br><span class="line">        &quot;incubationdate_dt&quot;:&quot;2006-01-17T00:00:00Z&quot;,</span><br><span class="line">        &quot;_version_&quot;:1544467579573108736&#125;]</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<h4>1.1 索引文件的结构</h4>
+<p>solr.xml文件内容如下：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;add&gt;</span><br><span class="line">&lt;doc&gt;</span><br><span class="line">  &lt;field name=&quot;id&quot;&gt;SOLR1000&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;name&quot;&gt;Solr, the Enterprise Search Server&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;manu&quot;&gt;Apache Software Foundation&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;cat&quot;&gt;software&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;cat&quot;&gt;search&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Advanced Full-Text Search Capabilities using Lucene&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Optimized for High Volume Web Traffic&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Standards Based Open Interfaces - XML and HTTP&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Comprehensive HTML Administration Interfaces&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Scalability - Efficient Replication to other Solr Search Servers&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Flexible and Adaptable with XML configuration and Schema&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Good unicode support: h&amp;#xE9;llo (hello with an accent over the e)&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;price&quot;&gt;0&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;popularity&quot;&gt;10&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;inStock&quot;&gt;true&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;incubationdate_dt&quot;&gt;2006-01-17T00:00:00.000Z&lt;/field&gt;</span><br><span class="line">&lt;/doc&gt;</span><br><span class="line">&lt;/add&gt;</span><br></pre></td></tr></table></figure></p>
+<p>doc标签就是solr能够搜索到的内容，field表示的字段。
+同时solr也可以通过搭建好的<a href="http://localhost:8983/solr/#/collection1/documents" target="_blank" rel="noopener">admin管理系统</a>进行在线添加。</p>
+<h4>1.2 solr中的&lt;doc&gt;标签和&lt;filed&gt;标签</h4>
+<p>solr可以对关键词设置权重和高亮，详情可以参见<a href="http://www.tuicool.com/articles/MfyimmE" target="_blank" rel="noopener">参考文章</a>或者这篇<a href="http://www.bkjia.com/yjs/763383.html" target="_blank" rel="noopener">文章</a></p>
+<h3>2 更新文档</h3>
+<p>即使我们把solr.xml再次推送到solr，我们搜索关键词“solr”返回的结果还是只有一个。这是为什么呢？
+我们可以查看schema.xml文件，文件路径在（solr-4.7.2\example\example-DIH\solr\db\conf），文件中的&lt;uniqueKey&gt;标签定义了搜索的唯一关键字。
+这里的&quot;&lt;uniqueKey&gt;id&lt;/uniqueKey&gt;&quot;表明根据field的id进行搜索，并且表示唯一的。</p>
+<p>我们可以通过查看<a href="http://localhost:8983/solr/#/collection1/plugins/core?entry=searcher" target="_blank" rel="noopener">solr的admin的core管理</a>查看当前solr中的可用的文档和最大的文档数
+<strong>numDocs</strong>：表示solr当前索引文档数，不包括已经删除，也不包括彻底情况的
+<strong>maxDoc</strong>：表示solr当前索引文档数，包括已经删除，但是没有被测定清空的文档</p>
+<h3>3 删除索引文档</h3>
+<p>我们可以通过POSTING命令根据id删除更新文档数据
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Ddata=args -Dcommit=false -jar post.jar &quot;&lt;delete&gt;&lt;id&gt;solr&lt;/id&gt;&lt;/delete&gt;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>通过上面的命令我们就可以删除id为solr的文档了，但是删除文档后仍然能够搜索到，需要提交才行，因为我们设置了默认不提交，即设置了属性：autoCommit，具体的设置可以参考<a href="http://yangjayup.iteye.com/blog/2050368" target="_blank" rel="noopener">这篇文章</a>
+我们也可以手动提交，使用的命令如下：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//当然我们文件夹位置还是在solr-4.7.2\example\exampledocs下执行</span><br><span class="line">java -jar post.jar -</span><br></pre></td></tr></table></figure></p>
+<p>我们可以查看我们一共提交了多少次，可以在admin中的UPDATEHANDLER查看http://localhost:8983/solr/#/collection1/plugins/updatehandler?entry=updateHandler</p>
+<h3>3 查询文档</h3>
+<p>我们可以通过HTTP的GET请求进行搜索。下面针对一个例子进行说明。
+搜索的URL为：http://localhost:8983/solr/collection1/select/?indent=on&amp;q=video&amp;fl=name,id,score
+其中搜索的关键字为：video（q为搜索关键字的参数）
+......
+solr搜索的参数具体见<a href="http://www.cnblogs.com/coldplayerest/archive/2012/05/20/2510671.html" target="_blank" rel="noopener">这篇文章</a>或者<a href="http://wiki.apache.org/solr/SearchHandler" target="_blank" rel="noopener">官方wiki</a></p>
+<h3>4 排序文档</h3>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/solr/" rel="tag"># solr</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/04/solr4.7.2搭建/" rel="next" title="solr4.7.2搭建">
+                <i class="fa fa-chevron-left"></i> solr4.7.2搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/10/mybatis逆向工程生成Java Bean/" rel="prev" title="mybatis逆向工程">
+                mybatis逆向工程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Henning" />
+          <p class="site-author-name" itemprop="name">Henning</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">solr快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">1 添加xml索引文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 索引文件的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 solr中的&lt;doc&gt;标签和&lt;filed&gt;标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">2 更新文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">3 删除索引文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">3 查询文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">4 排序文档</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henning</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
