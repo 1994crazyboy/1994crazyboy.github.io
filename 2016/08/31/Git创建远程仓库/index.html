@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="创建远程仓库并推送到GitHub  在本地创建SSH   在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）  &amp;lt;!-- more --&amp;gt; 1234//如果在用户目录下存在.ssh文件夹，并且里面有内容，那么可以跳过这步//例如：C:\Users\Administra">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://www.heyboy.me/2018/04/16/hello-world/index.html">
+<meta property="og:title" content="Git创建远程仓库">
+<meta property="og:url" content="http://www.heyboy.me/2016/08/31/Git创建远程仓库/index.html">
 <meta property="og:site_name" content="鼻子酸了不要紧">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="创建远程仓库并推送到GitHub  在本地创建SSH   在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）  &amp;lt;!-- more --&amp;gt; 1234//如果在用户目录下存在.ssh文件夹，并且里面有内容，那么可以跳过这步//例如：C:\Users\Administra">
 <meta property="og:locale" content="Zh-CN">
-<meta property="og:updated_time" content="2018-04-15T23:06:30.143Z">
+<meta property="og:updated_time" content="2017-01-09T14:18:11.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Git创建远程仓库">
+<meta name="twitter:description" content="创建远程仓库并推送到GitHub  在本地创建SSH   在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）  &amp;lt;!-- more --&amp;gt; 1234//如果在用户目录下存在.ssh文件夹，并且里面有内容，那么可以跳过这步//例如：C:\Users\Administra">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://www.heyboy.me/2018/04/16/hello-world/"/>
+  <link rel="canonical" href="http://www.heyboy.me/2016/08/31/Git创建远程仓库/"/>
 
 
 
 
 
-  <title>Hello World | 鼻子酸了不要紧</title>
+  <title>Git创建远程仓库 | 鼻子酸了不要紧</title>
   
 
 
@@ -262,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2018/04/16/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2016/08/31/Git创建远程仓库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Henning">
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Git创建远程仓库</h1>
         
 
         <div class="post-meta">
@@ -291,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T07:06:30+08:00">
-                2018-04-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-31T23:55:46+08:00">
+                2016-08-31
               </time>
             
 
@@ -329,20 +330,37 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2>创建远程仓库并推送到GitHub</h2>
+<ol>
+<li>在本地创建SSH</li>
+</ol>
+<blockquote>
+<p>在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）</p>
+</blockquote>
+<p>&lt;!-- more --&gt;</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//如果在用户目录下存在.ssh文件夹，并且里面有内容，那么可以跳过这步</span><br><span class="line">//例如：C:\Users\Administrator\.ssh</span><br><span class="line">//执行这个命令的时候，需要设置口令密码，为了方便，可以无需设置，直接一路回车确定即可创建出本地的ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;hyn886@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>2.在GitHub创建SSH Keys</p>
+<blockquote>
+<p>通过在GitHub上创建SSH Keys就可以与本地的私钥</p>
+<p>GitHub用户设置--&gt;SSH and GPG keys--&gt;New SSH Key</p>
+</blockquote>
+<p>然后输入title，并将id_rsa.pub文件的内容拷贝到key文本框中即可。</p>
+<p>==通过上面这两步之后就可以将本地仓库推送到GItHub上了，但是你的私钥(id_rsa)得在你的用户目录下的文件夹.ssh中==</p>
+<hr>
+<p>3.在GitHub创建仓库</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 在本地仓库执行</span><br><span class="line">git remote add origin https://github.com/1994crazyboy/test.git</span><br><span class="line">//推送主节点到远程仓库</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line">//经过上面两步之后，以后推送就可以直接使用</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>4.clone库</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//从远程克隆</span><br><span class="line">git clone git@github.com:1994crazyboy/regLogin.git</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这样之后就可以将GitHub上的仓库克隆到自己本地上</p>
+</blockquote>
+<hr>
+<p>5.GitHub的Fork</p>
+<blockquote>
+<p>Fork：分支，可以将别人的仓库分支到自己的GitHub上，这样克隆下来之后就可以推送上去。</p>
+</blockquote>
 
       
     </div>
@@ -358,6 +376,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
 
       
       
@@ -367,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/15/测试文章/" rel="next" title="测试文章">
-                <i class="fa fa-chevron-left"></i> 测试文章
+              <a href="/2016/08/31/Git分支管理/" rel="next" title="Git分支管理">
+                <i class="fa fa-chevron-left"></i> Git分支管理
               </a>
             
           </div>
@@ -377,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/23/Java-Js-RSA非对称加密算法实现/" rel="prev" title="Java-Js-RSA非对称加密算法实现">
-                Java-Js-RSA非对称加密算法实现 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/31/Javascript碰上MD5/" rel="prev" title="Git创建远程仓库">
+                Git创建远程仓库 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">创建远程仓库并推送到GitHub</span></a></li></ol></div>
             
 
           </div>

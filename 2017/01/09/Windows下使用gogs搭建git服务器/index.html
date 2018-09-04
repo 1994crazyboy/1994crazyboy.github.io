@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="gogs,git," />
 
 
 
@@ -94,17 +94,29 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！ &amp;lt;!-- m">
+<meta name="keywords" content="gogs,git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://www.heyboy.me/2018/04/16/hello-world/index.html">
+<meta property="og:title" content="Windows下使用gogs搭建git服务器">
+<meta property="og:url" content="http://www.heyboy.me/2017/01/09/Windows下使用gogs搭建git服务器/index.html">
 <meta property="og:site_name" content="鼻子酸了不要紧">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！ &amp;lt;!-- m">
 <meta property="og:locale" content="Zh-CN">
-<meta property="og:updated_time" content="2018-04-15T23:06:30.143Z">
+<meta property="og:image" content="http://p1.bpimg.com/4851/6df5ba2d7eb2d19e.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/c3e3c74a4eafd39a.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/435d9fcfcece8761.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/83a7600694daaf33.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/a7373dcda7a3dc5e.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/18c792e57c018a62.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/a416f07eecb84eef.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/4178f9aa8ce79644.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/faf24efbe993c6ce.jpg">
+<meta property="og:image" content="http://i1.piimg.com/4851/f924a1a108aee665.jpg">
+<meta property="og:updated_time" content="2017-01-20T14:53:49.134Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Windows下使用gogs搭建git服务器">
+<meta name="twitter:description" content="gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！ &amp;lt;!-- m">
+<meta name="twitter:image" content="http://p1.bpimg.com/4851/6df5ba2d7eb2d19e.jpg">
 
 
 
@@ -133,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://www.heyboy.me/2018/04/16/hello-world/"/>
+  <link rel="canonical" href="http://www.heyboy.me/2017/01/09/Windows下使用gogs搭建git服务器/"/>
 
 
 
 
 
-  <title>Hello World | 鼻子酸了不要紧</title>
+  <title>Windows下使用gogs搭建git服务器 | 鼻子酸了不要紧</title>
   
 
 
@@ -262,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2018/04/16/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2017/01/09/Windows下使用gogs搭建git服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Henning">
@@ -279,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Windows下使用gogs搭建git服务器</h1>
         
 
         <div class="post-meta">
@@ -291,8 +303,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T07:06:30+08:00">
-                2018-04-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-09T22:27:02+08:00">
+                2017-01-09
               </time>
             
 
@@ -329,20 +341,38 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>Windows 下 使用gogs搭建gitzhi</h2>
+<h3>1.gogs简介</h3>
+<p>gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！</p>
+<p><img src="http://p1.bpimg.com/4851/6df5ba2d7eb2d19e.jpg" alt="gogsHome"></p>
+<h3>2.gogs下载</h3>
+<p>官网下载地址：</p>
+<p>32位v0.9.113下载地址：http://download.csdn.net/detail/abcdhyn/9733224</p>
+<p>64位v0.9.113下载地址：http://download.csdn.net/detail/abcdhyn/9733225</p>
+<h3>3.gogs安装</h3>
+<p>下载解压出来后的目录为：</p>
+<p><img src="http://i1.piimg.com/4851/c3e3c74a4eafd39a.jpg" alt="download"></p>
+<p>在解压目录下打开cmd，然后在运行gogs.exe，建议不要双击运行
+！
+<img src="http://i1.piimg.com/4851/435d9fcfcece8761.jpg" alt="gogs"></p>
+<p>这里提示出了运行gogs相关运行参数。这里提示参数web是开启gogs web服务。</p>
+<h4><strong>然后运行==gogs.exe web==</strong></h4>
+<p><img src="http://i1.piimg.com/4851/83a7600694daaf33.jpg" alt="gogs web"></p>
+<p>运行成功后，会提示Listen：http://0.0.0.0:3000，这个就是gogs的服务地址，用浏览器打开即可弹出安装gogs提示界面。</p>
+<p>ps:其实就是输入http://localhost:3000即可，首次运行会跳转到安装页面，按照提示即可完成安装。gogs支持的数据库有mysql postsql sqlite，这里使用的是mysql，数据库默认名称为gogs。所以我们也按照默认名称创建一个用于保存gogs服务相关信息的数据库。</p>
+<p><img src="http://i1.piimg.com/4851/a7373dcda7a3dc5e.jpg" alt="image"></p>
+<h4><strong>- 创建gogs数据库</strong></h4>
+<p><img src="http://i1.piimg.com/4851/18c792e57c018a62.jpg" alt="image">
+<img src="http://i1.piimg.com/4851/a416f07eecb84eef.jpg" alt="image"></p>
+<h4><strong>- 设置gogs的代码仓库目录</strong></h4>
+<p><img src="http://i1.piimg.com/4851/4178f9aa8ce79644.jpg" alt="image"></p>
+<h4><strong>- 设置gogs的超级管理员</strong></h4>
+<p><img src="http://i1.piimg.com/4851/faf24efbe993c6ce.jpg" alt="image"></p>
+<h4><strong>- 安装成功</strong></h4>
+<p>安装成功后默认会使用刚才设置的管理员账号去登录。
+<img src="http://i1.piimg.com/4851/f924a1a108aee665.jpg" alt="image"></p>
 
       
     </div>
@@ -358,6 +388,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/gogs-git/" rel="tag"># gogs,git</a>
+          
+        </div>
+      
 
       
       
@@ -367,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/15/测试文章/" rel="next" title="测试文章">
-                <i class="fa fa-chevron-left"></i> 测试文章
+              <a href="/2016/09/25/Java中的线程安全和线程不安全/" rel="next" title="Java中的线程安全和线程不安全">
+                <i class="fa fa-chevron-left"></i> Java中的线程安全和线程不安全
               </a>
             
           </div>
@@ -377,8 +413,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/23/Java-Js-RSA非对称加密算法实现/" rel="prev" title="Java-Js-RSA非对称加密算法实现">
-                Java-Js-RSA非对称加密算法实现 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/15/测试文章/" rel="prev" title="测试文章">
+                测试文章 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Windows 下 使用gogs搭建gitzhi</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">1.gogs简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">2.gogs下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">3.gogs安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.1.</span> <span class="nav-text">然后运行==gogs.exe web==</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.2.</span> <span class="nav-text">- 创建gogs数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.3.</span> <span class="nav-text">- 设置gogs的代码仓库目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.4.</span> <span class="nav-text">- 设置gogs的超级管理员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.5.</span> <span class="nav-text">- 安装成功</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

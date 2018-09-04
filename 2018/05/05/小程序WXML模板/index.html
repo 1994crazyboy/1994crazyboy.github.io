@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="小程序," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="小程序数据绑定如果是定义为undefined的话就不会渲染   小程序data变量是区分大小写的，WXML的数据均来自于Page的data   数据绑定使用Mustache语法 即为双大括号，可以使用数值运算符、三元运算符、条件控制、数组、对象   wx:for属性可以循环数组用于绑定数据  wx:if属性用于条件判断  hidden属性可以控制显示隐藏   列表渲染  wx:for属性上绑定">
+<meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://www.heyboy.me/2018/04/16/hello-world/index.html">
+<meta property="og:title" content="小程序WXML模板">
+<meta property="og:url" content="http://www.heyboy.me/2018/05/05/小程序WXML模板/index.html">
 <meta property="og:site_name" content="鼻子酸了不要紧">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="小程序数据绑定如果是定义为undefined的话就不会渲染   小程序data变量是区分大小写的，WXML的数据均来自于Page的data   数据绑定使用Mustache语法 即为双大括号，可以使用数值运算符、三元运算符、条件控制、数组、对象   wx:for属性可以循环数组用于绑定数据  wx:if属性用于条件判断  hidden属性可以控制显示隐藏   列表渲染  wx:for属性上绑定">
 <meta property="og:locale" content="Zh-CN">
-<meta property="og:updated_time" content="2018-04-15T23:06:30.143Z">
+<meta property="og:updated_time" content="2018-05-04T16:58:12.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="小程序WXML模板">
+<meta name="twitter:description" content="小程序数据绑定如果是定义为undefined的话就不会渲染   小程序data变量是区分大小写的，WXML的数据均来自于Page的data   数据绑定使用Mustache语法 即为双大括号，可以使用数值运算符、三元运算符、条件控制、数组、对象   wx:for属性可以循环数组用于绑定数据  wx:if属性用于条件判断  hidden属性可以控制显示隐藏   列表渲染  wx:for属性上绑定">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://www.heyboy.me/2018/04/16/hello-world/"/>
+  <link rel="canonical" href="http://www.heyboy.me/2018/05/05/小程序WXML模板/"/>
 
 
 
 
 
-  <title>Hello World | 鼻子酸了不要紧</title>
+  <title>小程序WXML模板 | 鼻子酸了不要紧</title>
   
 
 
@@ -262,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2018/04/16/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2018/05/05/小程序WXML模板/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Henning">
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">小程序WXML模板</h1>
         
 
         <div class="post-meta">
@@ -291,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T07:06:30+08:00">
-                2018-04-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T00:25:54+08:00">
+                2018-05-05
               </time>
             
 
@@ -329,20 +330,48 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <ol>
+<li>
+<p>小程序数据绑定如果是定义为undefined的话就不会渲染</p>
+</li>
+<li>
+<p>小程序data变量是区分大小写的，WXML的数据均来自于Page的data</p>
+</li>
+<li>
+<p>数据绑定使用Mustache语法 即为双大括号，可以使用数值运算符、三元运算符、条件控制、数组、对象</p>
+</li>
+<li>
+<p>wx:for属性可以循环数组用于绑定数据  wx:if属性用于条件判断  hidden属性可以控制显示隐藏</p>
+</li>
+<li>
+<h2>列表渲染</h2>
+<ul>
+<li>wx:for属性上绑定一个数组用于渲染</li>
+<li>wx:key 如果不设置，那么渲染的顺序不固定，设置了之后就按照设置进行渲染</li>
+<li>wx:for-item 修改循环变量名称</li>
+<li>wx:for-index 修改循环数组下标</li>
+<li>借助&lt;block&gt;标签能够将多个元素进行循环渲染</li>
+</ul>
+</li>
+<li>
+<h2>条件渲染</h2>
+<ul>
+<li>wx:if 控制组件的渲染 此外还有 wx:elif  wx:else进行判读阿奴</li>
+<li>hidden的区别 ，wx:if 判断是否渲染，hidden判断是否显示（已经渲染了）</li>
+</ul>
+</li>
+<li>
+<h2>WXML模板使用</h2>
+<ul>
+<li>能够减少代码使用，抽取出共同的代码</li>
+<li>使用模板前需要使用template标签进行定义，template包裹的内容就是模板的内容</li>
+<li>模板都需要指定name属性</li>
+<li>使用模板也是在template标签中使用，定义is属性指定引用的模板，data属性传入模板的字段内容数据</li>
+<li>模板引用的两种方式：import include  使用方式：<code>&lt;import src=&quot;template_xxx.wxml&quot;/&gt;</code> 该方法主要引用不同路径下的模板过来到当前WXML文件中，这样就可以通过name属性进行引用那些模板了</li>
+<li></li>
+</ul>
+</li>
+</ol>
 
       
     </div>
@@ -358,6 +387,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/小程序/" rel="tag"># 小程序</a>
+          
+        </div>
+      
 
       
       
@@ -367,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/15/测试文章/" rel="next" title="测试文章">
-                <i class="fa fa-chevron-left"></i> 测试文章
+              <a href="/2018/05/04/微信小程序工程目录结构/" rel="next" title="微信小程序工程目录结构">
+                <i class="fa fa-chevron-left"></i> 微信小程序工程目录结构
               </a>
             
           </div>
@@ -377,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/23/Java-Js-RSA非对称加密算法实现/" rel="prev" title="Java-Js-RSA非对称加密算法实现">
-                Java-Js-RSA非对称加密算法实现 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/05/小程序之WXSS/" rel="prev" title="小程序之WXSS">
+                小程序之WXSS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">列表渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">条件渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">WXML模板使用</span></a></li></ol></div>
             
 
           </div>
