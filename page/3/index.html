@@ -334,21 +334,18 @@
       
         
           
-            <h3>1.线程安全</h3>
-<p>线程安全：
+          1.线程安全
+线程安全：
 线程安全就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。
-就是线程同步的意思，就是当一个程序对一个线程安全的方法或者语句进行访问的时候，其他的不能再对他进行操作了，必须等到这次访问结束以后才能对这个线程安全的方法进行访问。
-如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。
-&lt;!-- more --&gt;
-安全性：
-比如一个 ArrayList 类，在添加一个元素的时候，它可能会有两步来完成：1. 在 Items[Size] 的位置存放此元素；2. 增大 Size 的值。
-在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；
-而如果是在多线程情况下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调度线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍然等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。
-那好，我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不安全”了。</p>
-<h3>2.线程不安全</h3>
-<p>线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据</p>
-
-          
+就是线程同步的意思，就是当一个程序对一个线程安全的方法或者语句进行访问的时候，其他的不能再对他进行操
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/25/Java中的线程安全和线程不安全/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -466,27 +463,27 @@
       
         
           
-            <h1>Mybatis的逆向工程</h1>
-<hr>
-<p>在我们使用Mybatis过程中往往是先设计数据库，所以根据设计好的数据库生成具体的Java Bean是非常有必要的。</p>
-<p>&lt;!-- more --&gt;</p>
-<blockquote>
-<ul>
-<li>需要的Jar包</li>
-<li>配置文件generator.xml</li>
-<li>执行Java生成程序</li>
-</ul>
-</blockquote>
-<h3>1.所需Jar包</h3>
-<p>mybatis-generator-core-1.3.2.jar
-mysql-connector-java-5.1.7-bin.jar</p>
-<h3>2.配置generator.xml配置文件</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;      </span><br><span class="line">&lt;!DOCTYPE generatorConfiguration      </span><br><span class="line">  PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;      </span><br><span class="line">  &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;      </span><br><span class="line">      </span><br><span class="line">&lt;generatorConfiguration&gt; </span><br><span class="line">   &lt;!-- 连接数据库使用Jar包的路径 --&gt;</span><br><span class="line">  &lt;classPathEntry location=&quot;C:\Users\gxgc\Workspaces\MyEclipse 10\HanLP\mysql-connector-java-5.1.7-bin.jar&quot; /&gt;      </span><br><span class="line">      </span><br><span class="line">  &lt;context id=&quot;Mysql2Tables&quot; targetRuntime=&quot;MyBatis3&quot;&gt; </span><br><span class="line">    &lt;!-- </span><br><span class="line">      driverClass：数据库连接需要的包名称</span><br><span class="line">      connectionURL：数据库地址</span><br><span class="line">      userId：数据库账号</span><br><span class="line">      password：数据库密码</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot; </span><br><span class="line">        connectionURL=&quot;jdbc:mysql://localhost:3306/geo_information_v2?characterEncoding=utf-8&quot;      </span><br><span class="line">        userId=&quot;root&quot;      </span><br><span class="line">        password=&quot;gcgx&quot;&gt;     </span><br><span class="line">    &lt;/jdbcConnection&gt;      </span><br><span class="line">      </span><br><span class="line">      &lt;!-- </span><br><span class="line">      默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，</span><br><span class="line">      为 true时把JDBC DECIMAL 和NUMERIC 类型解析为java.math.BigDecimal </span><br><span class="line">        --&gt; </span><br><span class="line">    &lt;javaTypeResolver &gt;      </span><br><span class="line">      &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot; /&gt;      </span><br><span class="line">    &lt;/javaTypeResolver&gt;      </span><br><span class="line">      &lt;!--</span><br><span class="line">         生成PO类的位置</span><br><span class="line">      --&gt;</span><br><span class="line">    &lt;javaModelGenerator targetPackage=&quot;com.test.model&quot; targetProject=&quot;src&quot;&gt;      </span><br><span class="line">      &lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;  </span><br><span class="line">      &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt; </span><br><span class="line">      &lt;!-- 从数据库返回的值被清理前后的空格 --&gt; </span><br><span class="line">      &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot; /&gt;      </span><br><span class="line">    &lt;/javaModelGenerator&gt;      </span><br><span class="line">      </span><br><span class="line">     &lt;!-- targetProject:mapper映射文件生成的位置 --&gt;</span><br><span class="line">    &lt;sqlMapGenerator targetPackage=&quot;com.test.mapper&quot;  targetProject=&quot;src&quot;&gt;      </span><br><span class="line">      &lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;</span><br><span class="line">      &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;      </span><br><span class="line">    &lt;/sqlMapGenerator&gt;      </span><br><span class="line">      </span><br><span class="line">      &lt;!-- targetPackage：mapper接口生成的位置 --&gt;</span><br><span class="line">    &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;com.test.dao&quot;  targetProject=&quot;src&quot;&gt;      </span><br><span class="line">      &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;      </span><br><span class="line">    &lt;/javaClientGenerator&gt;</span><br><span class="line">    &lt;!-- 指定数据库表 --&gt;</span><br><span class="line">    &lt;table schema=&quot;test&quot; tableName=&quot;export_output&quot; domainObjectName=&quot;GXPOI&quot; enableCountByExample=&quot;false&quot; enableUpdateByExample=&quot;false&quot;      </span><br><span class="line">           enableDeleteByExample=&quot;false&quot; enableSelectByExample=&quot;false&quot; selectByExampleQueryId=&quot;false&quot;&gt;      </span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">  &lt;/context&gt;      </span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure></p>
-<h3>配置Java运行程序</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.File;    </span><br><span class="line">import java.io.IOException;    </span><br><span class="line">import java.sql.SQLException;    </span><br><span class="line">import java.util.ArrayList;    </span><br><span class="line">import java.util.List;    </span><br><span class="line">    </span><br><span class="line">import org.mybatis.generator.api.MyBatisGenerator;    </span><br><span class="line">import org.mybatis.generator.config.Configuration;    </span><br><span class="line">import org.mybatis.generator.config.xml.ConfigurationParser;    </span><br><span class="line">import org.mybatis.generator.exception.InvalidConfigurationException;    </span><br><span class="line">import org.mybatis.generator.exception.XMLParserException;    </span><br><span class="line">import org.mybatis.generator.internal.DefaultShellCallback;    </span><br><span class="line">    </span><br><span class="line">public class Mybatisgenerator&#123;    </span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;    </span><br><span class="line">        try &#123;    </span><br><span class="line">            System.out.println(&quot;start generator ...&quot;);    </span><br><span class="line">            List&lt;String&gt; warnings = new ArrayList&lt;String&gt;();    </span><br><span class="line">            boolean overwrite = true;    </span><br><span class="line">//            File configFile = new File(Mybatisgenerator.class.getResource(&quot;/generator.xml&quot;).getFile());</span><br><span class="line">            File configFile=new File(&quot;C:\\Users\\gxgc\\Workspaces\\MyEclipse 10\\HanLP\\src\\generator.xml&quot;);</span><br><span class="line">            ConfigurationParser cp = new ConfigurationParser(warnings);    </span><br><span class="line">            Configuration config = cp.parseConfiguration(configFile);    </span><br><span class="line">            DefaultShellCallback callback = new DefaultShellCallback(overwrite);    </span><br><span class="line">            MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);    </span><br><span class="line">            myBatisGenerator.generate(null);    </span><br><span class="line">            System.out.println(&quot;end generator!&quot;);    </span><br><span class="line">            for (String string : warnings) &#123;</span><br><span class="line">				System.out.println(string);</span><br><span class="line">			&#125;</span><br><span class="line">        &#125; catch (IOException e) &#123;    </span><br><span class="line">            e.printStackTrace();    </span><br><span class="line">        &#125; catch (XMLParserException e) &#123;    </span><br><span class="line">            e.printStackTrace();    </span><br><span class="line">        &#125; catch (InvalidConfigurationException e) &#123;    </span><br><span class="line">            e.printStackTrace();    </span><br><span class="line">        &#125; catch (SQLException e) &#123;    </span><br><span class="line">            e.printStackTrace();    </span><br><span class="line">        &#125; catch (InterruptedException e) &#123;    </span><br><span class="line">            e.printStackTrace();    </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>运行程序之后刷新文件结构即可查看生成的模型类和对应的接口和Mapper。</p>
+          Mybatis的逆向工程
 
-          
+在我们使用Mybatis过程中往往是先设计数据库，所以根据设计好的数据库生成具体的Java Bean是非常有必要的。
+&lt;!-- more --&gt;
+
+
+需要的Jar包
+配置文件generator.xml
+执行Java生成程序
+
+
+1.所需Jar包
+mybatis
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/10/mybatis逆向工程生成Java Bean/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -604,59 +601,31 @@ mysql-connector-java-5.1.7-bin.jar</p>
       
         
           
-            <h2>solr快速入门</h2>
-<hr>
-<blockquote>
-<ul>
-<li>添加xml索引文档</li>
-<li>更新文档</li>
-<li>删除文档</li>
-<li>查询文档</li>
-<li>排序文档</li>
-<li>关键字的高亮和权重</li>
-<li></li>
-</ul>
-</blockquote>
-<p>&lt;!-- more --&gt;</p>
-<h3>1 添加xml索引文档</h3>
-<p>索引测试文件的路径：solr-4.7.2\example\exampledocs
-例如添加该路径下的solr.xml和monitor.xml到solr中，使用的命令如下：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//切换到当前文件夹路径下，然后执行命令</span><br><span class="line">java -jar post.jar solr.xml monitor.xml</span><br></pre></td></tr></table></figure></p>
-<p>通过添加索引数据文件，就可以通过solr搜索到了，搜索的网址：
-http://localhost:8983/solr/#/collection1/query
-添加后还可以直接在浏览器中搜索。例如：http://localhost:8983/solr/collection1/select?q=solr&amp;wt=json&amp;indent=true
-上述的例子搜索的关键词是solr，在solr.xml文件中已经添加了该字段，所以能够搜索到内容如下：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;responseHeader&quot;:&#123;</span><br><span class="line">    &quot;status&quot;:0,</span><br><span class="line">    &quot;QTime&quot;:0,</span><br><span class="line">    &quot;params&quot;:&#123;</span><br><span class="line">      &quot;q&quot;:&quot;solr&quot;,</span><br><span class="line">      &quot;indent&quot;:&quot;true&quot;,</span><br><span class="line">      &quot;wt&quot;:&quot;json&quot;&#125;&#125;,</span><br><span class="line">  &quot;response&quot;:&#123;&quot;numFound&quot;:1,&quot;start&quot;:0,&quot;docs&quot;:[</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;:&quot;SOLR1000&quot;,</span><br><span class="line">        &quot;name&quot;:&quot;Solr, the Enterprise Search Server&quot;,</span><br><span class="line">        &quot;manu&quot;:&quot;Apache Software Foundation&quot;,</span><br><span class="line">        &quot;cat&quot;:[&quot;software&quot;,</span><br><span class="line">          &quot;search&quot;],</span><br><span class="line">        &quot;features&quot;:[&quot;Advanced Full-Text Search Capabilities using Lucene&quot;,</span><br><span class="line">          &quot;Optimized for High Volume Web Traffic&quot;,</span><br><span class="line">          &quot;Standards Based Open Interfaces - XML and HTTP&quot;,</span><br><span class="line">          &quot;Comprehensive HTML Administration Interfaces&quot;,</span><br><span class="line">          &quot;Scalability - Efficient Replication to other Solr Search Servers&quot;,</span><br><span class="line">          &quot;Flexible and Adaptable with XML configuration and Schema&quot;,</span><br><span class="line">          &quot;Good unicode support: héllo (hello with an accent over the e)&quot;],</span><br><span class="line">        &quot;price&quot;:0.0,</span><br><span class="line">        &quot;price_c&quot;:&quot;0,USD&quot;,</span><br><span class="line">        &quot;popularity&quot;:10,</span><br><span class="line">        &quot;inStock&quot;:true,</span><br><span class="line">        &quot;incubationdate_dt&quot;:&quot;2006-01-17T00:00:00Z&quot;,</span><br><span class="line">        &quot;_version_&quot;:1544467579573108736&#125;]</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<h4>1.1 索引文件的结构</h4>
-<p>solr.xml文件内容如下：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;add&gt;</span><br><span class="line">&lt;doc&gt;</span><br><span class="line">  &lt;field name=&quot;id&quot;&gt;SOLR1000&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;name&quot;&gt;Solr, the Enterprise Search Server&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;manu&quot;&gt;Apache Software Foundation&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;cat&quot;&gt;software&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;cat&quot;&gt;search&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Advanced Full-Text Search Capabilities using Lucene&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Optimized for High Volume Web Traffic&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Standards Based Open Interfaces - XML and HTTP&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Comprehensive HTML Administration Interfaces&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Scalability - Efficient Replication to other Solr Search Servers&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Flexible and Adaptable with XML configuration and Schema&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;features&quot;&gt;Good unicode support: h&amp;#xE9;llo (hello with an accent over the e)&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;price&quot;&gt;0&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;popularity&quot;&gt;10&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;inStock&quot;&gt;true&lt;/field&gt;</span><br><span class="line">  &lt;field name=&quot;incubationdate_dt&quot;&gt;2006-01-17T00:00:00.000Z&lt;/field&gt;</span><br><span class="line">&lt;/doc&gt;</span><br><span class="line">&lt;/add&gt;</span><br></pre></td></tr></table></figure></p>
-<p>doc标签就是solr能够搜索到的内容，field表示的字段。
-同时solr也可以通过搭建好的<a href="http://localhost:8983/solr/#/collection1/documents" target="_blank" rel="noopener">admin管理系统</a>进行在线添加。</p>
-<h4>1.2 solr中的&lt;doc&gt;标签和&lt;filed&gt;标签</h4>
-<p>solr可以对关键词设置权重和高亮，详情可以参见<a href="http://www.tuicool.com/articles/MfyimmE" target="_blank" rel="noopener">参考文章</a>或者这篇<a href="http://www.bkjia.com/yjs/763383.html" target="_blank" rel="noopener">文章</a></p>
-<h3>2 更新文档</h3>
-<p>即使我们把solr.xml再次推送到solr，我们搜索关键词“solr”返回的结果还是只有一个。这是为什么呢？
-我们可以查看schema.xml文件，文件路径在（solr-4.7.2\example\example-DIH\solr\db\conf），文件中的&lt;uniqueKey&gt;标签定义了搜索的唯一关键字。
-这里的&quot;&lt;uniqueKey&gt;id&lt;/uniqueKey&gt;&quot;表明根据field的id进行搜索，并且表示唯一的。</p>
-<p>我们可以通过查看<a href="http://localhost:8983/solr/#/collection1/plugins/core?entry=searcher" target="_blank" rel="noopener">solr的admin的core管理</a>查看当前solr中的可用的文档和最大的文档数
-<strong>numDocs</strong>：表示solr当前索引文档数，不包括已经删除，也不包括彻底情况的
-<strong>maxDoc</strong>：表示solr当前索引文档数，包括已经删除，但是没有被测定清空的文档</p>
-<h3>3 删除索引文档</h3>
-<p>我们可以通过POSTING命令根据id删除更新文档数据
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Ddata=args -Dcommit=false -jar post.jar &quot;&lt;delete&gt;&lt;id&gt;solr&lt;/id&gt;&lt;/delete&gt;&quot;</span><br></pre></td></tr></table></figure></p>
-<p>通过上面的命令我们就可以删除id为solr的文档了，但是删除文档后仍然能够搜索到，需要提交才行，因为我们设置了默认不提交，即设置了属性：autoCommit，具体的设置可以参考<a href="http://yangjayup.iteye.com/blog/2050368" target="_blank" rel="noopener">这篇文章</a>
-我们也可以手动提交，使用的命令如下：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//当然我们文件夹位置还是在solr-4.7.2\example\exampledocs下执行</span><br><span class="line">java -jar post.jar -</span><br></pre></td></tr></table></figure></p>
-<p>我们可以查看我们一共提交了多少次，可以在admin中的UPDATEHANDLER查看http://localhost:8983/solr/#/collection1/plugins/updatehandler?entry=updateHandler</p>
-<h3>3 查询文档</h3>
-<p>我们可以通过HTTP的GET请求进行搜索。下面针对一个例子进行说明。
-搜索的URL为：http://localhost:8983/solr/collection1/select/?indent=on&amp;q=video&amp;fl=name,id,score
-其中搜索的关键字为：video（q为搜索关键字的参数）
-......
-solr搜索的参数具体见<a href="http://www.cnblogs.com/coldplayerest/archive/2012/05/20/2510671.html" target="_blank" rel="noopener">这篇文章</a>或者<a href="http://wiki.apache.org/solr/SearchHandler" target="_blank" rel="noopener">官方wiki</a></p>
-<h3>4 排序文档</h3>
+          solr快速入门
 
-          
+
+
+添加xml索引文档
+更新文档
+删除文档
+查询文档
+排序文档
+关键字的高亮和权重
+
+
+
+&lt;!-- more --&gt;
+1 添加xml索引文档
+索引测试文件的路径：solr-4.7.2\example\exampledocs
+例如添加该路径下的solr.xml和moni
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/10/solr快速入门/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -774,25 +743,28 @@ solr搜索的参数具体见<a href="http://www.cnblogs.com/coldplayerest/archiv
       
         
           
-            <h2>solr4.7.2搭建</h2>
-<hr>
-<blockquote>
-<ul>
-<li>快速搭建（jetty容器）</li>
-<li>基于Tomcat</li>
-</ul>
-</blockquote>
-<p>&lt;!-- more --&gt;</p>
-<h4>1.快速搭建</h4>
-<p>在solr-4.7.2\example文件夹下启动命令CMD
-执行下面命令
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar start.jar</span><br></pre></td></tr></table></figure></p>
-<p>执行这个命令是将solr放在jetty容器下执行，并不是tomcat。
-执行之后打开<a href="http://localhost:8983/solr/" target="_blank" rel="noopener">solr地址</a></p>
-<h4>2.基于Tomcat</h4>
-<p>（稍后补上）</p>
+          solr4.7.2搭建
 
-          
+
+
+快速搭建（jetty容器）
+基于Tomcat
+
+
+&lt;!-- more --&gt;
+1.快速搭建
+在solr-4.7.2\example文件夹下启动命令CMD
+执行下面命令
+1java -jar start.jar
+执行这个命令是将solr放在jetty容器下执行
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/04/solr4.7.2搭建/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -910,26 +882,23 @@ solr搜索的参数具体见<a href="http://www.cnblogs.com/coldplayerest/archiv
       
         
           
-            <h2>一、_config.yml文件</h2>
-<p>hexo通过修改_config.yml文件达到修改博客的主题和配置。</p>
-<p>&lt;!-- more --&gt;</p>
-<h4>1.基本页面信息</h4>
-<blockquote>
-<h1>Site</h1>
-<p>title: ***  #网站标题，在标签页上显示
-subtitle: <strong><em>,</em></strong>,<strong><em>,</em></strong>  #副标题，网站名下面
-description: XXX,XXX,XXX  #网站描述，便于搜索引擎用关键词检索
-author: XXX #作者
-language: zh-CN  #语言，中文</p>
-</blockquote>
-<h4>2.主题信息</h4>
-<p>通过hexo的<a href="https://hexo.io/themes/" target="_blank" rel="noopener">官网</a>下载主题，然后将主题解压的文件夹放到hexo\themes目录下即可。</p>
-<blockquote>
-<p>引用方式：
-在_config.yml文件中的大概68行，修改theme: XXX（指定的主题的文件夹名称）</p>
-</blockquote>
+          一、_config.yml文件
+hexo通过修改_config.yml文件达到修改博客的主题和配置。
+&lt;!-- more --&gt;
+1.基本页面信息
 
-          
+Site
+title: ***  #网站标题，在标签页上显示
+subtitle: ,,,  #副标题，网站名下面
+description:
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/04/hexo博客整体配置/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1047,39 +1016,23 @@ language: zh-CN  #语言，中文</p>
       
         
           
-            <h2>创建远程仓库并推送到GitHub</h2>
-<ol>
-<li>在本地创建SSH</li>
-</ol>
-<blockquote>
-<p>在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）</p>
-</blockquote>
-<p>&lt;!-- more --&gt;</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//如果在用户目录下存在.ssh文件夹，并且里面有内容，那么可以跳过这步</span><br><span class="line">//例如：C:\Users\Administrator\.ssh</span><br><span class="line">//执行这个命令的时候，需要设置口令密码，为了方便，可以无需设置，直接一路回车确定即可创建出本地的ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;hyn886@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>2.在GitHub创建SSH Keys</p>
-<blockquote>
-<p>通过在GitHub上创建SSH Keys就可以与本地的私钥</p>
-<p>GitHub用户设置--&gt;SSH and GPG keys--&gt;New SSH Key</p>
-</blockquote>
-<p>然后输入title，并将id_rsa.pub文件的内容拷贝到key文本框中即可。</p>
-<p>==通过上面这两步之后就可以将本地仓库推送到GItHub上了，但是你的私钥(id_rsa)得在你的用户目录下的文件夹.ssh中==</p>
-<hr>
-<p>3.在GitHub创建仓库</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 在本地仓库执行</span><br><span class="line">git remote add origin https://github.com/1994crazyboy/test.git</span><br><span class="line">//推送主节点到远程仓库</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line">//经过上面两步之后，以后推送就可以直接使用</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>4.clone库</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//从远程克隆</span><br><span class="line">git clone git@github.com:1994crazyboy/regLogin.git</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这样之后就可以将GitHub上的仓库克隆到自己本地上</p>
-</blockquote>
-<hr>
-<p>5.GitHub的Fork</p>
-<blockquote>
-<p>Fork：分支，可以将别人的仓库分支到自己的GitHub上，这样克隆下来之后就可以推送上去。</p>
-</blockquote>
+          创建远程仓库并推送到GitHub
 
-          
+在本地创建SSH
+
+
+在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）
+
+&lt;!-- more --&gt;
+1234//如果在用户目录下
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/31/Git创建远程仓库/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1197,8 +1150,15 @@ language: zh-CN  #语言，中文</p>
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/31/Javascript碰上MD5/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1316,60 +1276,19 @@ language: zh-CN  #语言，中文</p>
       
         
           
-            <h2>基础知识</h2>
-<ol>
-<li>创建版本库</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 设置git全局配置</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br><span class="line">// 初始化仓库，在指定的文件夹上启动git bash</span><br><span class="line">git init</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>&lt;!-- more --&gt;</p>
-<ol start="2">
-<li>添加文件到暂存区</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//添加所有文件</span><br><span class="line">git add .</span><br><span class="line">//添加readme.txt</span><br><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>3.添加文件到仓库</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 提交到仓库</span><br><span class="line">git commit -m &quot;备注说明&quot;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="4">
-<li>查看当前暂存区和工作区的状态</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//查看状态</span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line">//查看所有变化的文件</span><br><span class="line">git diff .</span><br><span class="line"></span><br><span class="line">//查看指定文件的变化</span><br><span class="line">git diff readme.txt</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="5">
-<li>
-<p>版本回退</p>
-<p>git必须知道当前版本是哪个版本，git使用HEAD表示当前版本，最新提交的版本就是当前版本，上一个版本就是HEAD^ ，上上个版本就是HEAD^^ ，如果上第50个版本，那么就是HEAD~50</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//查看版本历史</span><br><span class="line">git log</span><br><span class="line"></span><br><span class="line">//查看版本历史可以查看图形样式</span><br><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>commit 9c1984ef0732b49247ebd8d2228c3410f544e42c
-Author: fightingMan <a href="mailto:hyn886@qq.com" target="_blank" rel="noopener">hyn886@qq.com</a>
-Date:   Thu Jun 9 21:22:58 2016 +0800&gt;</p>
-<p>version 1.1</p>
-</blockquote>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//回退到上一个版本</span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">//回退到指定的版本，其中9c1984ef073是这个的id</span><br><span class="line">git reset --hard 9c1984ef073</span><br><span class="line"></span><br><span class="line">//记录每一次的命令</span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="6">
-<li>撤销修改</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//丢弃工作区对readme.txt的修改</span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>如果你对readme.txt文件修改了，但是没有提交到暂存区，这时候可以使用这个命令将你修改的撤销掉。
-这个命令只会撤销工作区的操作。</p>
-</blockquote>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//丢弃暂存区的，回到工作区</span><br><span class="line">git reset HEAD readme.txt</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>将暂存区，并没有提交到仓库的操作都撤销掉，记住这里只是撤销暂存区的，回到工作区的状态。</p>
-</blockquote>
-<hr>
-<ol start="7">
-<li>删除文件</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//使用git删除仓库文件</span><br><span class="line">git rm readme.txt</span><br><span class="line"></span><br><span class="line">//然后提交代码仓库</span><br><span class="line">git commit -m &quot;infoXXXX&quot;</span><br></pre></td></tr></table></figure></p>
+          基础知识
 
-          
+创建版本库
+
+12345// 设置git全局配置git config --global user.name &quot;Your Name&quot;git config --global user.email &quot;email@example.com&quot;// 初始化仓库，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/31/Git基础知识/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1487,64 +1406,18 @@ Date:   Thu Jun 9 21:22:58 2016 +0800&gt;</p>
       
         
           
-            <h2>分支的概念</h2>
-<blockquote>
-<ol>
-<li>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</li>
-</ol>
-</blockquote>
-<p>&lt;!-- more --&gt;</p>
-<blockquote>
-<ol start="2">
-<li>在Git里，这个分支叫主分支，即master分支。</li>
-</ol>
-</blockquote>
-<h2>创建并管理分支</h2>
-<ol>
-<li>
-<p>创建分支
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//创建并切换到新建的分支</span><br><span class="line">git checkout -b branch01</span><br><span class="line"></span><br><span class="line">//其实上一步的操作就是相当于下面的两个操作</span><br><span class="line">git branch branch01     //创建分支branch01</span><br><span class="line">git checkout branch01   //切换分支branch01</span><br></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>显示所有分支</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//显示所有分支</span><br><span class="line">git branch</span><br><span class="line">//切换主线分支</span><br><span class="line">git checkout master</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="3">
-<li>合并分支</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//将branch01合并到当前分支</span><br><span class="line">git merge branch01</span><br></pre></td></tr></table></figure></p>
-<hr>
-<blockquote>
-<p>使用git merge branch 01 执行之后使用的模式是：Fast-forward，这个模式是快进模式，所以非常的快速。</p>
-</blockquote>
-<ol start="4">
-<li>删除分支</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//删除分支</span><br><span class="line">git branch -d branch01</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="5">
-<li>合并之后的冲突问题</li>
-</ol>
-<blockquote>
-<p>当从主线分支出一个分支：branch01，在后在这个分支上面修改了A文件然后提交到仓库。这时候切换回到主线，又修改了A文件，那么这时候提交到仓库并将分支合并过来的时候，就会出现冲突了：
-$ git merge branch01
-Auto-merging readme.txt
-CONFLICT (content): Merge conflict in readme.txt
-Automatic merge failed; fix conflicts and then commit the result.</p>
-</blockquote>
-<p>这时候会在文件中显示如下冲突的部分：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">I am ssm test1 and hmaster.</span><br><span class="line">=======</span><br><span class="line">I am ssm test1 and hAhA.</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch01</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="6">
-<li>合并分支的策略</li>
-</ol>
-<p>上面已经出现合并分支的模式有Fast-forward，这个模式是快速模式，在这个模式下删除分支之后分支的信息会被丢失。
-所以可以禁用Fast-forward模式。</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//合并的时候禁用Fast-forward模式，并作一次提交commit</span><br><span class="line">git merge --no-ff -m &quot;merge with no-ff&quot; branch01</span><br></pre></td></tr></table></figure></p>
+          分支的概念
 
-          
+
+分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/31/Git分支管理/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1662,17 +1535,21 @@ Automatic merge failed; fix conflicts and then commit the result.</p>
       
         
           
-            <p>至于为什么要搭建这样的一个博客就不多介绍了，搭建的好处可以自行Google。
-hexo是一个静态博客搭建系统，<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">中文的文档</a>，通过中文文档可以很快的学会hexo命令。
-&lt;!-- more --&gt;</p>
-<p>好了，现在开始正式进行搭建工作。</p>
-<h3>前提条件</h3>
-<h4>1.拥有GitHub账号，可以到<a href="https://github.com/" target="_blank" rel="noopener">官网</a>注册。<img src="http://ocqcnbf67.bkt.clouddn.com/github.jpg" alt="githubIndex"></h4>
-<h4>2.安装Git环境，<a href="https://git-scm.com/download" target="_blank" rel="noopener">下载地址</a>。</h4>
-<h4>3.安装node.js，<a href="https://nodejs.org/en/" target="_blank" rel="noopener">下载地址</a>，直接下载安装包双击安装即可。</h4>
-<h4>4.配置SSH Key，只有配置了SSH Key才能将页面推送到GitHub上。</h4>
-
-          
+          至于为什么要搭建这样的一个博客就不多介绍了，搭建的好处可以自行Google。
+hexo是一个静态博客搭建系统，中文的文档，通过中文文档可以很快的学会hexo命令。
+&lt;!-- more --&gt;
+好了，现在开始正式进行搭建工作。
+前提条件
+1.拥有GitHub账号，可以到官网注册。
+2.安装
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/28/hexo+github实战搭建博客/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

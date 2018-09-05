@@ -334,53 +334,28 @@
       
         
           
-            <ol>
-<li>
-<h2>WXSS选择器</h2>
-<ul>
-<li>类选择器 、 ID选择器、元素选择器、为元素选择器</li>
-<li>不支持联级选择器</li>
-<li>选择器优先级：元素选择器&lt;类选择器&lt;ID选择器&lt;内联样式选择器&lt;!important</li>
-</ul>
-</li>
-<li>
-<h2>盒子模型</h2>
-<ul>
-<li>Flexbox布局方式 解决：竖排元素、元素左侧/右侧竖向对齐</li>
-<li>最核心概念 ： 容器和项目，将容器内不同项目按照不同形式排布</li>
-<li>flex-direction: 项目元素排列的方向</li>
-<li>flex-wrap:项目元素排列的方式</li>
-<li>justify-content：项目在主轴上的对齐方式</li>
-<li>align-items:项目交叉轴的方式</li>
-<li>align-content：多行项目的排列方式</li>
-<li>order：该属性设置项目的排列顺序</li>
-<li>flex-grow：项目的放大比例</li>
-<li>flex-shrink:项目的缩小比例</li>
-<li>flex-basis：项目在主轴上的空间</li>
-<li>align-self：项目的对齐方式<br>
-<a href="https://blog.csdn.net/qq_32067045/article/details/54562302" target="_blank" rel="noopener">参考</a></li>
-</ul>
-</li>
-<li>
-<h2>动态样式</h2>
-<ul>
-<li>即为使用data中的变量设置style样式，使用的语法也为双大括号类型</li>
-</ul>
-</li>
-<li>
-<h2>尺寸单位和样式导入</h2>
-<ul>
-<li>rpx样式单位，全程：responsive pixel,为了适配不同宽度的屏幕，规定屏幕宽度为750物理像素</li>
-<li>px和rpx换算基准  以375个物理像素为基准，即一个宽度为375个物理像素的屏幕下1rpx=1px</li>
-<li>如果宽度为750个物理像素 那么1rpx=375/750px=0.5px</li>
-<li>常用换算 iPhone5:1rpx=0.42px ； iPhone6:1rpx=0.5px</li>
-<li>样式导入使用@import导入外链样式   <code>@import &quot;style.wxss&quot;</code></li>
-<li>app.wxss定义全局样式，每个页面的page.wxss是该页面的样式</li>
-</ul>
-</li>
-</ol>
-
           
+
+WXSS选择器
+
+类选择器 、 ID选择器、元素选择器、为元素选择器
+不支持联级选择器
+选择器优先级：元素选择器&lt;类选择器&lt;ID选择器&lt;内联样式选择器&lt;!important
+
+
+
+盒子模型
+
+Flexbox布局方式 解决：竖排元素、元素左侧/右侧竖向对齐
+最核心概念 ： 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/05/小程序之WXSS/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -498,50 +473,26 @@
       
         
           
-            <ol>
-<li>
-<p>小程序数据绑定如果是定义为undefined的话就不会渲染</p>
-</li>
-<li>
-<p>小程序data变量是区分大小写的，WXML的数据均来自于Page的data</p>
-</li>
-<li>
-<p>数据绑定使用Mustache语法 即为双大括号，可以使用数值运算符、三元运算符、条件控制、数组、对象</p>
-</li>
-<li>
-<p>wx:for属性可以循环数组用于绑定数据  wx:if属性用于条件判断  hidden属性可以控制显示隐藏</p>
-</li>
-<li>
-<h2>列表渲染</h2>
-<ul>
-<li>wx:for属性上绑定一个数组用于渲染</li>
-<li>wx:key 如果不设置，那么渲染的顺序不固定，设置了之后就按照设置进行渲染</li>
-<li>wx:for-item 修改循环变量名称</li>
-<li>wx:for-index 修改循环数组下标</li>
-<li>借助&lt;block&gt;标签能够将多个元素进行循环渲染</li>
-</ul>
-</li>
-<li>
-<h2>条件渲染</h2>
-<ul>
-<li>wx:if 控制组件的渲染 此外还有 wx:elif  wx:else进行判读阿奴</li>
-<li>hidden的区别 ，wx:if 判断是否渲染，hidden判断是否显示（已经渲染了）</li>
-</ul>
-</li>
-<li>
-<h2>WXML模板使用</h2>
-<ul>
-<li>能够减少代码使用，抽取出共同的代码</li>
-<li>使用模板前需要使用template标签进行定义，template包裹的内容就是模板的内容</li>
-<li>模板都需要指定name属性</li>
-<li>使用模板也是在template标签中使用，定义is属性指定引用的模板，data属性传入模板的字段内容数据</li>
-<li>模板引用的两种方式：import include  使用方式：<code>&lt;import src=&quot;template_xxx.wxml&quot;/&gt;</code> 该方法主要引用不同路径下的模板过来到当前WXML文件中，这样就可以通过name属性进行引用那些模板了</li>
-<li></li>
-</ul>
-</li>
-</ol>
-
           
+
+小程序数据绑定如果是定义为undefined的话就不会渲染
+
+
+小程序data变量是区分大小写的，WXML的数据均来自于Page的data
+
+
+数据绑定使用Mustache语法 即为双大括号，可以使用数值运算符、三元运算符、条件控制、数组、对象
+
+
+wx:for属性可以循环数组用于绑定数据  w
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/05/小程序WXML模板/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -659,60 +610,33 @@
       
         
           
-            <ol>
-<li>
-<h2>目录结构</h2>
-<ul>
-<li>app.js :小程序逻辑</li>
-<li>app.json :小程序公共设置</li>
-<li>app.wxss ：小程序公共样式</li>
-<li>ext.json：第三方平台拓展配置</li>
-<li>Project.config.json:工程配置</li>
-</ul>
-</li>
-<li>
-<h2>JSON配置</h2>
-<h4>Pages页面配置</h4>
-<ul>
-<li>设置底部导航栏 tabbar</li>
-</ul>
-<blockquote>
-<p>json里设置tabbar <em>（写上代码）</em><br>
-+   <strong>配置优先级</strong><br>
-局部配置覆盖全局配置</p>
-</blockquote>
-</li>
-<li>
-<h2>小程序权限</h2>
-<p>&lt;u&gt;<strong>个人认证的不支持微信支付</strong>&lt;/u&gt;<br>
-权限列表：</p>
-<ul>
-<li>开发者权限</li>
-<li>体验权限</li>
-<li>数据管理</li>
-</ul>
-<p>一般人员分配：</p>
-<ul>
-<li>超级管理员</li>
-<li>开发者</li>
-<li>体验者</li>
-<li>运维者</li>
-</ul>
-</li>
-<li>
-<h2>小程序版本分类</h2>
-<p>开发版本<br>
-体验版本：上传代码的时候可以设置体验版本，生成二维码用于给大家体验<br>
-上线版本</p>
-</li>
-<li>
-<h2>小程序发布类型</h2>
-<p>全网发布 全部用户更新版本 24小时全部覆盖<br>
-分阶段发布 灰度发布分阶段覆盖，老用户旧版本新用户新版本</p>
-</li>
-</ol>
-
           
+
+目录结构
+
+app.js :小程序逻辑
+app.json :小程序公共设置
+app.wxss ：小程序公共样式
+ext.json：第三方平台拓展配置
+Project.config.json:工程配置
+
+
+
+JSON配置
+Pages页面配置
+
+设置底部导航栏 tabbar
+
+
+json里设置tab
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/04/微信小程序工程目录结构/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -830,8 +754,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/23/Java事件驱动模型和观察者模式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -949,8 +880,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/23/Session、Cookie区别及Tomcat产生的SessionId/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1068,8 +1006,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/23/Vue-Lottie开场动画实现/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1187,8 +1132,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/23/Java-Js-RSA非对称加密算法实现/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1306,22 +1258,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/16/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1439,9 +1384,16 @@
       
         
           
-            <h2>Quick Start</h2>
+          Quick Start
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/15/测试文章/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1559,40 +1511,15 @@
       
         
           
-            <p>gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！</p>
-<p>&lt;!-- more --&gt;</p>
-<h2>Windows 下 使用gogs搭建gitzhi</h2>
-<h3>1.gogs简介</h3>
-<p>gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bonobo等等一些，网上比较热门的应该属于gogs了，毕竟国人还发的，还是支持的！</p>
-<p><img src="http://p1.bpimg.com/4851/6df5ba2d7eb2d19e.jpg" alt="gogsHome"></p>
-<h3>2.gogs下载</h3>
-<p>官网下载地址：</p>
-<p>32位v0.9.113下载地址：http://download.csdn.net/detail/abcdhyn/9733224</p>
-<p>64位v0.9.113下载地址：http://download.csdn.net/detail/abcdhyn/9733225</p>
-<h3>3.gogs安装</h3>
-<p>下载解压出来后的目录为：</p>
-<p><img src="http://i1.piimg.com/4851/c3e3c74a4eafd39a.jpg" alt="download"></p>
-<p>在解压目录下打开cmd，然后在运行gogs.exe，建议不要双击运行
-！
-<img src="http://i1.piimg.com/4851/435d9fcfcece8761.jpg" alt="gogs"></p>
-<p>这里提示出了运行gogs相关运行参数。这里提示参数web是开启gogs web服务。</p>
-<h4><strong>然后运行==gogs.exe web==</strong></h4>
-<p><img src="http://i1.piimg.com/4851/83a7600694daaf33.jpg" alt="gogs web"></p>
-<p>运行成功后，会提示Listen：http://0.0.0.0:3000，这个就是gogs的服务地址，用浏览器打开即可弹出安装gogs提示界面。</p>
-<p>ps:其实就是输入http://localhost:3000即可，首次运行会跳转到安装页面，按照提示即可完成安装。gogs支持的数据库有mysql postsql sqlite，这里使用的是mysql，数据库默认名称为gogs。所以我们也按照默认名称创建一个用于保存gogs服务相关信息的数据库。</p>
-<p><img src="http://i1.piimg.com/4851/a7373dcda7a3dc5e.jpg" alt="image"></p>
-<h4><strong>- 创建gogs数据库</strong></h4>
-<p><img src="http://i1.piimg.com/4851/18c792e57c018a62.jpg" alt="image">
-<img src="http://i1.piimg.com/4851/a416f07eecb84eef.jpg" alt="image"></p>
-<h4><strong>- 设置gogs的代码仓库目录</strong></h4>
-<p><img src="http://i1.piimg.com/4851/4178f9aa8ce79644.jpg" alt="image"></p>
-<h4><strong>- 设置gogs的超级管理员</strong></h4>
-<p><img src="http://i1.piimg.com/4851/faf24efbe993c6ce.jpg" alt="image"></p>
-<h4><strong>- 安装成功</strong></h4>
-<p>安装成功后默认会使用刚才设置的管理员账号去登录。
-<img src="http://i1.piimg.com/4851/f924a1a108aee665.jpg" alt="image"></p>
-
-          
+          gogs：go git service gogs是一款基于go语言的自助Git服务，通过gogs就可以搭建公司企业内部的Github，除了gogs之外还有大名鼎鼎的Gitlab，但是gitlab搭建太过于麻烦了，虽然功能十分的丰富，但是还是难道了很多人。当然还有gitstack、gitblit、bo
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/09/Windows下使用gogs搭建git服务器/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
