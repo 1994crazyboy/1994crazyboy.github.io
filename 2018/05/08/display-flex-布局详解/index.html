@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://www.heyboy.me/2018/05/08/display-flex-布局详解/flex01.jpg">
 <meta property="og:image" content="http://www.heyboy.me/2018/05/08/display-flex-布局详解/flex02.jpg">
 <meta property="og:image" content="http://www.heyboy.me/2018/05/08/display-flex-布局详解/flex03.jpg">
-<meta property="og:updated_time" content="2018-09-05T05:46:13.146Z">
+<meta property="og:updated_time" content="2018-09-05T05:47:33.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="display:flex 布局详解">
 <meta name="twitter:description" content="原文链接：https://zhuanlan.zhihu.com/p/25303493  flex 基本概念  在 flex 容器中默认存在两条轴，水平主轴(main axis) 和垂直的交叉轴(cross axis)，这是默认的设置，当然你可以通过修改使垂直方向变为主轴，水平方向变为交叉轴，这个我们后面再说。 在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main">
@@ -338,7 +338,7 @@
 <p>原文链接：https://zhuanlan.zhihu.com/p/25303493</p>
 </blockquote>
 <h2>flex 基本概念</h2>
-<p><img src="/2018/05/08/display-flex-布局详解/./flex01.jpg" alt="flex01"></p>
+<p><img src="/2018/05/08/display-flex-布局详解/flex01.jpg" alt="flex01"></p>
 <p>在 flex 容器中默认存在两条轴，水平主轴(main axis) 和垂直的交叉轴(cross axis)，这是默认的设置，当然你可以通过修改使垂直方向变为主轴，水平方向变为交叉轴，这个我们后面再说。</p>
 <p>在容器中的每个单元块被称之为 flex item，每个项目占据的主轴空间为 (main size), 占据的交叉轴的空间为 (cross size)。</p>
 <p>这里需要强调，不能先入为主认为宽度就是 main size，高度就是 cross size，这个还要取决于你主轴的方向，如果你垂直方向是主轴，那么项目的高度就是 main size.</p>
@@ -348,9 +348,9 @@
 <p>首先，实现 flex 布局需要先指定一个容器，任何一个容器都可以被指定为 flex 布局，这样容器内部的元素就可以使用 flex 来进行布局。</p>
 <p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    display: flex | inline-flex;       //可以有两种取值</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">分别生成一个块状或行内的 <span class="selector-tag">flex</span> 容器盒子。简单说来，如果你使用块元素如 <span class="selector-tag">div</span>，你就可以使用 <span class="selector-tag">flex</span>，而如果你使用行内元素，你可以使用 <span class="selector-tag">inline-flex</span>。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;font color=#ff6666 size=3&gt;**需要注意的是：当时设置 flex 布局之后，子元素的 float、clear、vertical-align 的属性将会失效。**&lt;/font&gt;</span><br><span class="line">有下面六种属性可以设置在容器上，它们分别是：  </span><br><span class="line">1. <span class="selector-tag">flex-direction</span>  </span><br><span class="line">2. <span class="selector-tag">flex-wrap</span>  </span><br><span class="line">3. <span class="selector-tag">flex-flow</span>  </span><br><span class="line">4. <span class="selector-tag">justify-content</span>  </span><br><span class="line">5. <span class="selector-tag">align-items</span>  </span><br><span class="line">6. <span class="selector-tag">align-content</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 1. <span class="selector-tag">flex-direction</span>: 决定主轴的方向(即项目的排列方向)</span><br><span class="line">```<span class="selector-tag">css</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>默认值：row，主轴为水平方向，起点在左端。</p>
-<p><img src="/2018/05/08/display-flex-布局详解/./flex02.jpg" alt="flex02"></p>
+<p><img src="/2018/05/08/display-flex-布局详解/flex02.jpg" alt="flex02"></p>
 <p>row-reverse：主轴为水平方向，起点在右端
-<img src="/2018/05/08/display-flex-布局详解/./flex03.jpg" alt="flex02"></p>
+<img src="/2018/05/08/display-flex-布局详解/flex03.jpg" alt="flex02"></p>
 
       
     </div>
