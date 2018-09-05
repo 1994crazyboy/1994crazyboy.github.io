@@ -976,7 +976,7 @@ language: zh-CN  #语言，中文</p>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2016/08/31/Git基础知识/">
+    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2016/08/31/Git创建远程仓库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Henning">
@@ -995,7 +995,7 @@ language: zh-CN  #语言，中文</p>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/08/31/Git基础知识/" itemprop="url">Git基础知识</a></h1>
+                <a class="post-title-link" href="/2016/08/31/Git创建远程仓库/" itemprop="url">Git创建远程仓库</a></h1>
         
 
         <div class="post-meta">
@@ -1047,58 +1047,37 @@ language: zh-CN  #语言，中文</p>
       
         
           
-            <h2>基础知识</h2>
+            <h2>创建远程仓库并推送到GitHub</h2>
 <ol>
-<li>创建版本库</li>
+<li>在本地创建SSH</li>
 </ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 设置git全局配置</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br><span class="line">// 初始化仓库，在指定的文件夹上启动git bash</span><br><span class="line">git init</span><br></pre></td></tr></table></figure></p>
-<hr>
+<blockquote>
+<p>在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）</p>
+</blockquote>
 <p>&lt;!-- more --&gt;</p>
-<ol start="2">
-<li>添加文件到暂存区</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//添加所有文件</span><br><span class="line">git add .</span><br><span class="line">//添加readme.txt</span><br><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//如果在用户目录下存在.ssh文件夹，并且里面有内容，那么可以跳过这步</span><br><span class="line">//例如：C:\Users\Administrator\.ssh</span><br><span class="line">//执行这个命令的时候，需要设置口令密码，为了方便，可以无需设置，直接一路回车确定即可创建出本地的ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;hyn886@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>3.添加文件到仓库</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 提交到仓库</span><br><span class="line">git commit -m &quot;备注说明&quot;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="4">
-<li>查看当前暂存区和工作区的状态</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//查看状态</span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line">//查看所有变化的文件</span><br><span class="line">git diff .</span><br><span class="line"></span><br><span class="line">//查看指定文件的变化</span><br><span class="line">git diff readme.txt</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ol start="5">
-<li>
-<p>版本回退</p>
-<p>git必须知道当前版本是哪个版本，git使用HEAD表示当前版本，最新提交的版本就是当前版本，上一个版本就是HEAD^ ，上上个版本就是HEAD^^ ，如果上第50个版本，那么就是HEAD~50</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//查看版本历史</span><br><span class="line">git log</span><br><span class="line"></span><br><span class="line">//查看版本历史可以查看图形样式</span><br><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure></p>
+<p>2.在GitHub创建SSH Keys</p>
 <blockquote>
-<p>commit 9c1984ef0732b49247ebd8d2228c3410f544e42c
-Author: fightingMan <a href="mailto:hyn886@qq.com" target="_blank" rel="noopener">hyn886@qq.com</a>
-Date:   Thu Jun 9 21:22:58 2016 +0800&gt;</p>
-<p>version 1.1</p>
+<p>通过在GitHub上创建SSH Keys就可以与本地的私钥</p>
+<p>GitHub用户设置--&gt;SSH and GPG keys--&gt;New SSH Key</p>
 </blockquote>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//回退到上一个版本</span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">//回退到指定的版本，其中9c1984ef073是这个的id</span><br><span class="line">git reset --hard 9c1984ef073</span><br><span class="line"></span><br><span class="line">//记录每一次的命令</span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure></p>
+<p>然后输入title，并将id_rsa.pub文件的内容拷贝到key文本框中即可。</p>
+<p>==通过上面这两步之后就可以将本地仓库推送到GItHub上了，但是你的私钥(id_rsa)得在你的用户目录下的文件夹.ssh中==</p>
 <hr>
-<ol start="6">
-<li>撤销修改</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//丢弃工作区对readme.txt的修改</span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure></p>
+<p>3.在GitHub创建仓库</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 在本地仓库执行</span><br><span class="line">git remote add origin https://github.com/1994crazyboy/test.git</span><br><span class="line">//推送主节点到远程仓库</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line">//经过上面两步之后，以后推送就可以直接使用</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>4.clone库</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//从远程克隆</span><br><span class="line">git clone git@github.com:1994crazyboy/regLogin.git</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>如果你对readme.txt文件修改了，但是没有提交到暂存区，这时候可以使用这个命令将你修改的撤销掉。
-这个命令只会撤销工作区的操作。</p>
-</blockquote>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//丢弃暂存区的，回到工作区</span><br><span class="line">git reset HEAD readme.txt</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>将暂存区，并没有提交到仓库的操作都撤销掉，记住这里只是撤销暂存区的，回到工作区的状态。</p>
+<p>这样之后就可以将GitHub上的仓库克隆到自己本地上</p>
 </blockquote>
 <hr>
-<ol start="7">
-<li>删除文件</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//使用git删除仓库文件</span><br><span class="line">git rm readme.txt</span><br><span class="line"></span><br><span class="line">//然后提交代码仓库</span><br><span class="line">git commit -m &quot;infoXXXX&quot;</span><br></pre></td></tr></table></figure></p>
+<p>5.GitHub的Fork</p>
+<blockquote>
+<p>Fork：分支，可以将别人的仓库分支到自己的GitHub上，这样克隆下来之后就可以推送上去。</p>
+</blockquote>
 
           
         
@@ -1266,7 +1245,7 @@ Date:   Thu Jun 9 21:22:58 2016 +0800&gt;</p>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2016/08/31/Git创建远程仓库/">
+    <link itemprop="mainEntityOfPage" href="http://www.heyboy.me/2016/08/31/Git基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Henning">
@@ -1285,7 +1264,7 @@ Date:   Thu Jun 9 21:22:58 2016 +0800&gt;</p>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/08/31/Git创建远程仓库/" itemprop="url">Git创建远程仓库</a></h1>
+                <a class="post-title-link" href="/2016/08/31/Git基础知识/" itemprop="url">Git基础知识</a></h1>
         
 
         <div class="post-meta">
@@ -1337,37 +1316,58 @@ Date:   Thu Jun 9 21:22:58 2016 +0800&gt;</p>
       
         
           
-            <h2>创建远程仓库并推送到GitHub</h2>
+            <h2>基础知识</h2>
 <ol>
-<li>在本地创建SSH</li>
+<li>创建版本库</li>
 </ol>
-<blockquote>
-<p>在.ssh文件夹中有两个文件（一个是id_rsa，另一个是id_rsa.pub）组成SSH Key的秘钥对，一个是公钥（id_rsa.pub），一个是私钥（id_rsa）</p>
-</blockquote>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 设置git全局配置</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br><span class="line">// 初始化仓库，在指定的文件夹上启动git bash</span><br><span class="line">git init</span><br></pre></td></tr></table></figure></p>
+<hr>
 <p>&lt;!-- more --&gt;</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//如果在用户目录下存在.ssh文件夹，并且里面有内容，那么可以跳过这步</span><br><span class="line">//例如：C:\Users\Administrator\.ssh</span><br><span class="line">//执行这个命令的时候，需要设置口令密码，为了方便，可以无需设置，直接一路回车确定即可创建出本地的ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;hyn886@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>添加文件到暂存区</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//添加所有文件</span><br><span class="line">git add .</span><br><span class="line">//添加readme.txt</span><br><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>2.在GitHub创建SSH Keys</p>
+<p>3.添加文件到仓库</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 提交到仓库</span><br><span class="line">git commit -m &quot;备注说明&quot;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<ol start="4">
+<li>查看当前暂存区和工作区的状态</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//查看状态</span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line">//查看所有变化的文件</span><br><span class="line">git diff .</span><br><span class="line"></span><br><span class="line">//查看指定文件的变化</span><br><span class="line">git diff readme.txt</span><br></pre></td></tr></table></figure></p>
+<hr>
+<ol start="5">
+<li>
+<p>版本回退</p>
+<p>git必须知道当前版本是哪个版本，git使用HEAD表示当前版本，最新提交的版本就是当前版本，上一个版本就是HEAD^ ，上上个版本就是HEAD^^ ，如果上第50个版本，那么就是HEAD~50</p>
+</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//查看版本历史</span><br><span class="line">git log</span><br><span class="line"></span><br><span class="line">//查看版本历史可以查看图形样式</span><br><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>通过在GitHub上创建SSH Keys就可以与本地的私钥</p>
-<p>GitHub用户设置--&gt;SSH and GPG keys--&gt;New SSH Key</p>
+<p>commit 9c1984ef0732b49247ebd8d2228c3410f544e42c
+Author: fightingMan <a href="mailto:hyn886@qq.com" target="_blank" rel="noopener">hyn886@qq.com</a>
+Date:   Thu Jun 9 21:22:58 2016 +0800&gt;</p>
+<p>version 1.1</p>
 </blockquote>
-<p>然后输入title，并将id_rsa.pub文件的内容拷贝到key文本框中即可。</p>
-<p>==通过上面这两步之后就可以将本地仓库推送到GItHub上了，但是你的私钥(id_rsa)得在你的用户目录下的文件夹.ssh中==</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//回退到上一个版本</span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">//回退到指定的版本，其中9c1984ef073是这个的id</span><br><span class="line">git reset --hard 9c1984ef073</span><br><span class="line"></span><br><span class="line">//记录每一次的命令</span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>3.在GitHub创建仓库</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 在本地仓库执行</span><br><span class="line">git remote add origin https://github.com/1994crazyboy/test.git</span><br><span class="line">//推送主节点到远程仓库</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line">//经过上面两步之后，以后推送就可以直接使用</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>4.clone库</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//从远程克隆</span><br><span class="line">git clone git@github.com:1994crazyboy/regLogin.git</span><br></pre></td></tr></table></figure></p>
+<ol start="6">
+<li>撤销修改</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//丢弃工作区对readme.txt的修改</span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>这样之后就可以将GitHub上的仓库克隆到自己本地上</p>
+<p>如果你对readme.txt文件修改了，但是没有提交到暂存区，这时候可以使用这个命令将你修改的撤销掉。
+这个命令只会撤销工作区的操作。</p>
+</blockquote>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//丢弃暂存区的，回到工作区</span><br><span class="line">git reset HEAD readme.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>将暂存区，并没有提交到仓库的操作都撤销掉，记住这里只是撤销暂存区的，回到工作区的状态。</p>
 </blockquote>
 <hr>
-<p>5.GitHub的Fork</p>
-<blockquote>
-<p>Fork：分支，可以将别人的仓库分支到自己的GitHub上，这样克隆下来之后就可以推送上去。</p>
-</blockquote>
+<ol start="7">
+<li>删除文件</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//使用git删除仓库文件</span><br><span class="line">git rm readme.txt</span><br><span class="line"></span><br><span class="line">//然后提交代码仓库</span><br><span class="line">git commit -m &quot;infoXXXX&quot;</span><br></pre></td></tr></table></figure></p>
 
           
         
